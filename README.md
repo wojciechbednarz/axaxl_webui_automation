@@ -39,7 +39,7 @@ This project is a web UI test automation framework designed for AXAXL. It provid
 ### Running Tests
 To run the tests, use the following command:
 ```bash
-pytest --alluredir=reports/allure-results
+pytest --alluredir=allure-results
 ```
 
 ### Generating Allure Reports
