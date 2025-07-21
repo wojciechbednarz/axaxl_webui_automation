@@ -1,0 +1,31 @@
+name: Playwright Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    # This workflow runs Playwright tests in a Docker container and uploads Allure results as an artifact.
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Build Docker image
+        run: docker build -t playwright-tests .
+
+      - name: Run Playwright tests in Docker
+        run: |
+          docker run --rm \
+          -v ${{ github.workspace }}:/app \
+          playwright-tests
+
+      - name: Upload Allure results artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: reports/allure-results

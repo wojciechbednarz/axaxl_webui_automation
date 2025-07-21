@@ -11,6 +11,8 @@ This project is a web UI test automation framework designed for AXAXL. It provid
 - **Integration**: Easily integrates with CI/CD pipelines for continuous testing.
 - **Extensible**: Allows for custom extensions and plugins to enhance functionality.
 - **Support for Page Object Model (POM)**: Implements the POM design pattern for better organization of test code.
+- **Docker Support**: Provides a Dockerfile for containerized test execution, ensuring consistent environments across different machines.
+- **GitHub Actions**: Utilizes GitHub Actions for CI/CD, automating the testing process on every commit or pull request.
 
 ## Getting Started
 ### Prerequisites
@@ -18,6 +20,8 @@ This project is a web UI test automation framework designed for AXAXL. It provid
 - **Playwright**: Ensure Playwright is installed in your environment.
 - **Allure**: Install Allure for reporting purposes.
 - **pytest**: Use pytest as the test runner.
+- **Git**: Ensure Git is installed for version control.
+- **Docker**: (Optional) Install Docker for containerized test execution.
 
 ### Installation
 1. Clone the repository:
@@ -42,6 +46,14 @@ To run the tests, use the following command:
 pytest --alluredir=allure-results
 ```
 
+### To run tests with Docker, use the following commands:
+```bash
+docker build -t playwright-tests .
+```
+then (for Linux or macOS users use `$(pwd)` to get the current directory):
+```bash
+docker run -v ${PWD}/allure-results:/app/allure-results playwright-tests
+```
 ### Generating Allure Reports
 To generate temporary Allure reports, run:
 ```bash
