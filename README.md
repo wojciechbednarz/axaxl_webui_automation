@@ -57,6 +57,12 @@ then
 allure open allure-report
 ```
 
+If tests are run via GitHub Actions, the Allure report will be generated automatically and can be downloaded from the GitHub Actions artifacts.
+Then you can view the report by running:
+```bash
+allure open allure-report
+```
+
 ### Directory Structure
 ```
 axaxl_webui_automation/
